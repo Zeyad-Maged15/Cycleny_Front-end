@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up & Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 300px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            background: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .message {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="signup-container">
+        <h2>Sign Up</h2>
+        <input type="text" id="signup-username" placeholder="Username" required>
+        <input type="email" id="signup-email" placeholder="Email" required>
+        <input type="password" id="signup-password" placeholder="Password" required>
+        <input type="password" id="signup-confirm-password" placeholder="Confirm Password" required>
+        <button onclick="signUp()">Sign Up</button>
+        <p class="message" id="signup-message"></p>
+    </div>
+
+    <div class="container" id="login-container" style="display: none;">
+        <h2>Login</h2>
+        <input type="email" id="login-email" placeholder="Email" required>
+        <input type="password" id="login-password" placeholder="Password" required>
+        <button onclick="login()">Login</button>
+        <p class="message" id="login-message"></p>
+    </div>
+
+    <script>
+        function signUp() {
+            const username = document.getElementById('signup-username').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const confirmPassword = document.getElementById('signup-confirm-password').value;
+            const message = document.getElementById('signup-message');
+    
+            if (password !== confirmPassword) {
+                message.textContent = "Passwords do not match!";
+                message.style.color = "red";
+                return;
+            }
+    
+            fetch('https://cyclenyweb2.runasp.net/api/SignUp/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({ username, email, password, confirmPassword }),
+                
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('API Response:', data);
+                if (data.success) {
+                    message.style.color = 'green';
+                    message.textContent = 'Sign-up successful! Redirecting...';
+                    setTimeout(() => {
+                        document.getElementById('signup-container').style.display = 'none';
+                        document.getElementById('login-container').style.display = 'block';
+                    }, 1500);
+                } else {
+                    message.textContent = data.message || 'Sign-up failed';
+                }
+            })
+            .catch(error => {
+                console.error('Fetch error:', error);
+                message.textContent = 'Error: ' + error.message;
+            });
+        }
+    </script>
+    
+</body>
+</html>

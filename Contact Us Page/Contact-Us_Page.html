@@ -1,0 +1,165 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Contact Us - Cycleny
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link rel="stylesheet" href="Contact-Us_Page.css">
+  <link rel="stylesheet" href="../header.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+ </head>
+ <body class="bg-gray-100">
+  <div class="h-20">
+  </div>
+  <header class="header">
+    <div class="container">
+      <div class="flex items-center">
+        <img style="position: relative; top: 1vw; border-radius: 19%;" alt="Logo" class="logo" src="../logo.jpeg" />
+      </div>
+      <nav style="position: relative; top: 1vw;">
+        <a style="background-color: white; color: #4a5568;" class="nav-home" href="../Home_Page/Home_Page/index.html">Home</a>
+        <a class="nav-link" href="../Services/index.html">Services</a>
+        <a class="nav-link" href="../Home_Page/Home_Page/index.html#events">Events</a>
+        <a class="nav-link" href="../About Us/cycleny.html">About Us</a>
+        <a style="background-color: #38a169; color: white;" class="nav-link" href="../Contact Us Page/Contact-Us_Page.html">Contact us</a>
+      </nav>
+      <div style="position: relative; top: 1vw;" class="contact-info">
+        <div class="flex items-center text-gray-600">
+          <i class="fas fa-phone-alt"></i>
+          <span>+1 555-555-5556</span>
+        </div>
+        <a style="background-color: white; color: #4a5568;" class="contact-button" href="../Sign Up Page/Sign-Up Page.html">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container mx-auto flex flex-col md:flex-row py-12 px-6">
+   <section class="flex-1 mb-12 md:mb-0 md:mr-6">
+    <h1 class="text-3xl font-bold mb-4">
+     Contact Us
+    </h1>
+    <p class="mb-6">
+     Contact us about anything related to our company or services. We'll do our best to get back to you as soon as possible.
+    </p>
+    <form action="https://formspree.io/f/xkndlrvl" class="space-y-6" method="post">
+     <div>
+      <label class="block text-sm font-medium text-gray-700" for="name">
+       Your Name:
+      </label>
+      <input class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm" id="name" name="name" required="" type="text"/>
+     </div>
+     <div>
+      <label class="block text-sm font-medium text-gray-700" for="email">
+       Your E-mail:
+      </label>
+      <input class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm" id="email" name="email" required="" type="email"/>
+     </div>
+     <div>
+      <label class="block text-sm font-medium text-gray-700" for="message">
+       Your Message:
+      </label>
+      <textarea class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm" id="message" name="message" required=""></textarea>
+     </div>
+     <div>
+      <input class="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 cursor-pointer" type="submit" value="Send Message Now"/>
+     </div>
+    </form>
+   </section>
+   <aside class="flex-1">
+    <h2 class="text-2xl font-bold mb-4">
+     Cycleny Team
+    </h2>
+    <address class="not-italic mb-6">
+     250 Executive Park Blvd, Suite 3400
+     <br/>
+     San Francisco, CA 94134
+     <br/>
+     United States
+     <br/>
+     <a class="text-green-600 hover:underline" href="tel:+201101908275">
+      +201101908275
+     </a>
+     <br/>
+     <a class="text-green-600 hover:underline" href="mailto:Cycleny@gmail.com">
+      Cycleny@gmail.com
+     </a>
+    </address>
+   </aside>
+  </main>
+  <footer >
+    <div class="footer-content">
+      <div class="footer-left">
+        <h3>Designed By Cycleny Team</h3>
+        <p>We are a team of passionate individuals dedicated to enhancing everyone's life through innovative recycling solutions. We create impactful products that address environmental challenges and promote sustainability.</p>
+        <p>Our solutions are designed for small to medium-sized companies looking to optimize their waste management and reduce their ecological footprint. Together, we can build a greener future!</p>
+      </div>
+      <div class="footer-right">
+    <p>Cycleny</p>
+    <p>250 Executive Park Blvd, Suite 3400</p>
+    <p>San Francisco CA 94134</p>
+    <p>San Francisco CA 94134</p>
+    <p>United States</p>
+
+      </div>
+    </div>
+
+  
+    <div style="position:relative;bottom: 14vw;" class="data" class="flex flex-col md:items-center">
+      <p class="mb-2"><i class="fas fa-phone-alt"></i> +201101908275</p>
+      <p class="mb-4"><i class="fas fa-envelope"></i> Cycleny@gmail.com</p>
+      <div class="flex space-x-4">
+          <a href="#"><i class="fab fa-github fa-2x"></i></a>
+          <a href="#"><i class="fab fa-discord fa-2x"></i></a>
+          <a href="#"><i class="fab fa-instagram fa-2x"></i></a>
+          <a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
+      </div>
+  </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2023 Cycleny. All rights reserved.</p>
+    </div>
+  </footer>
+  <script>
+   document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contact-form');
+            
+            contactForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                // Collecting form data
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const subject = document.getElementById('subject').value;
+                const question = document.getElementById('question').value;
+
+                // Basic validation
+                if (!name || !email || !phone || !subject || !question) {
+                    alert('Please fill out all required fields.');
+                    return;
+                }
+                
+                // Email format validation
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(email)) {
+                    alert('Please enter a valid email address.');
+                    return;
+                }
+                
+                // Phone number format validation
+                const phonePattern = /^[0-9]{10,15}$/;
+                if (!phonePattern.test(phone)) {
+                    alert('Please enter a valid phone number.');
+                    return;
+                }
+                
+                // Displaying a simple alert with form data
+                alert(`Thank you, ${name}. We have received your message: "${question}".`);
+            });
+        });
+  </script>
+ </body>
+</html>

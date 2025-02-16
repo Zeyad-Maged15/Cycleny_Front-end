@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cycleny</title>
+  <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+  <div style="height: 5pc;"></div>
+
+  <header class="header">
+    <div class="container">
+      <div class="flex items-center">
+        <img alt="Logo" class="logo" src="../logo.jpeg" />
+      </div>
+      <nav>
+        <a style="background-color: white; color: #4a5568;" class="nav-home" href="../Home_Page/Home_Page/index.html">Home</a>
+        <a class="nav-link" href="../Services/index.html">Services</a>
+        <a class="nav-link" href="../Home_Page/Home_Page/index.html#events">Events</a>
+        <a class="nav-link" href="../About Us/cycleny.html">About Us</a>
+        <a class="nav-link" href="../Contact Us Page/Contact-Us_Page.html">Contact us</a>
+      </nav>
+      <div class="contact-info">
+        <div class="flex items-center text-gray-600">
+          <i class="fas fa-phone-alt"></i>
+          <span>+1 555-555-5556</span>
+        </div>
+        <a class="contact-button" href="../Sign Up Page/Sign-Up Page.html">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="contact-section">
+    <form id="login-form">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Password" required>
+      </div>
+      <button type="submit">Log In</button>
+      <p id="login-message"></p>
+      <p>Don't Have Account? <a href="../Sign Up Page/Sign-Up Page.html">Sign Up</a></p>
+    </form>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+     <div class="footer-left">
+      <h3>Designed By Cycleny Team</h3>
+      <p>We are a team of passionate individuals dedicated to enhancing everyone's life through innovative recycling solutions. We create impactful products that address environmental challenges and promote sustainability.</p>
+      <p>Our solutions are designed for small to medium-sized companies looking to optimize their waste management and reduce their ecological footprint. Together, we can build a greener future!</p>
+     </div>
+     <div class="footer-right">
+      <h3>Contact Us</h3>
+      <p>Have questions or need support? Reach out to us:</p>
+      <p>Email: support@cycleny.com</p>
+      <p>Phone: +1 555-555-5556</p>
+      <p>Follow us on social media for updates and news:</p>
+      <div class="flex space-x-4 mt-4">
+       <a href="#"><i class="fab fa-mail fa-2x"></i></a>
+       <a href="#"><i style="color: white;" class="fab fa-facebook fa-2x"></i></a>
+       <a href="#"><i style="color: white;" class="fab fa-instagram fa-2x"></i></a>
+       <a href="#"><i style="color: white;" class="fab fa-linkedin fa-2x"></i></a>
+      </div>
+     </div>
+    </div>
+    <div class="footer-bottom">
+     <p>© 2025 Cycleny. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const message = document.getElementById('login-message');
+      
+      fetch('https://cyclenyweb2.runasp.net/api/Login/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({ email, password }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('🔍 API Response:', data);
+        
+        if (data.status === true) {
+          message.style.color = 'green';
+          message.textContent = 'Login successful! Redirecting...';
+          setTimeout(() => {
+            window.location.href = '../../Home_Page/Home_Page/index.html';
+          }, 1500);
+        } else {
+          message.style.color = 'red';
+          message.textContent = data.message || 'Invalid email or password';
+        }
+      })
+      .catch(error => {
+        console.error('❌ Fetch error:', error);
+        message.style.color = 'red';
+        message.textContent = 'Error: ' + error.message;
+      });
+    });
+  </script>
+</body>
+</html>
